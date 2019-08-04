@@ -1,0 +1,197 @@
+<html >
+	<title>Daun: Nobody ever reads the title</title>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    	<link rel="stylesheet" href="index.css">	
+	</head>
+	<body onLoad="init()">
+	<div id = "input">
+		<div id = "heading"><h1> Text file processor </h1></div>
+		<div id = "description"><h2> Upload the file (.txt or .html) below! </h2></div>
+		<input type="file" id="myFile" multiple size="50">
+		<div>
+			<input type="checkbox" id= "parse_tags"/>
+			<label for="parse_tags">parse HTML/XML tags</label>
+		</div>
+		<button id = "start"> Upload </button>
+	</div>
+<!------------ BODY ------------->
+	<div id = "text-detail">
+		<!------
+			Things to be added here:
+			1. Name of the text file uploaded
+			2. Text file size (in KB)
+			3. number of lines
+			4. number of words
+			5. number of characters
+			6. min,max,avg (of word length) + example word
+			7. min,max,avg (of sentence length) + example sentence?
+
+		------->
+		<div id = "file-name"></div>
+		<div id = "file-info">
+			<div id = "file-size" class = "file-basic"> </div>
+			<div id = "file-characters" class = "file-basic"> </div>
+			<div id = "file-info-detail">
+				<div id = "file-info-lines">
+					<div id = "file-lines" class = "file-detail"> </div>
+					<div id = "file-lines-min" class = "file-detail"> </div>
+					<div id = "file-lines-max" class = "file-detail"> </div>
+					<div id = "file-lines-avg" class = "file-detail"> </div>
+				</div>
+				<div id = "file-info-words" class = "file-detail">
+					<div id = "file-words" class = "file-detail"> </div>
+					<div id = "file-words-min" class = "file-detail"> </div>
+					<div id = "file-words-max" class = "file-detail"> </div>
+					<div id = "file-words-avg" class = "file-detail"> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id = "information">
+		<div id = "infograph">
+			<div id = "histogram_plots_N_word" class = "item_size">
+				<div class = "header"> Histogram of Frequent Words </div>
+					<div class = "inputbox">
+						<input type="text" id="histogram_N_word" placeholder="example: 20" />
+						<button id="histogram_N_word_button">Update</button>
+					</div>
+					<div id = "histogram_N_word_graph">
+					</div>
+			</div>
+			<div id = "histogram_plots_sentence_length" class = "item_size">
+				<div class = "header"> Histogram of Sentence Length </div>
+			</div>
+			<div id = "histogram_plots_word_length" class = "item_size">
+				<div class = "header"> Histogram of Word Length </div>
+			</div>
+		</div>
+
+		<div id = "infograph">
+			<div id = "histogramPair" class = "item_size">
+				<div class = "header"> Histogram of Paired Words </div>
+				<div class = "inputbox">
+					<input type="text" id="histogram_pair_word" placeholder="example: 20" />
+					<button id="histogram_pair_word_button">Update</button>
+				</div>
+				<div id = "histogram_pair_word_graph">
+				</div>
+			</div>
+			<div id = "pie1" class = "item_size">
+				<div class = "header"> Pie Distribution of Character Classes</div>
+				<div id = "pie_char_class"></div>
+			</div>
+			<div id = "pie" class = "item_size">
+				<div class = "header"> Pie Distribution of Characters </div>
+				<div id = "pie_char_dist"> </div>
+			</div>
+		</div>
+
+		<div id = "infograph">
+			<div id = "impression_analysis" class = "item_size">
+				<div class = "header"> Impression Analysis </div>
+				<div id = "positive_negative">
+				</div>
+			</div>
+<!-- 			<div id = "dictionary_valid" class = "item_size">
+				<div class = "header"> % Words that are in dictionary </div>
+				<div id = "valid_invalid">
+				</div>
+			</div> -->
+		</div>
+
+		
+		<div id = "infocloud">
+			<div class = "header"> Word Cloud of Item </div>
+			<div class = "inputbox">
+				<input type="text" id="word_cloud_value" placeholder="example: 20" />
+				<button id="word_cloud_button">Update</button>
+			</div>
+			<div id = "word_cloud">
+			</div>
+		</div>
+
+		<div id = "Word Display">
+			<!------
+				Things to be added here:
+				4 sentence field
+			------->
+			<div class = "sentence-input">
+				<div class = "sentence-input-box">
+					<div class = "header"> First and Last N sentences </div>
+					<div class = "inputbox">
+						<input type="text" id="first-and-last" placeholder="example: 5" />
+						<button id="first-and-last-button">Update</button>
+					</div>
+				</div>
+
+				<div id = "firstNresult">
+					<div id ="firstNwrapper">
+						<div> First N Sentences </div>
+						<div id = "firstN" class = "sentence-box">
+						</div>
+					</div>
+
+					<div id = "lastNwrapper">
+						<div> Last N Sentences </div>
+						<div id = "lastN" class = "sentence-box">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class = "sentence-input">
+				<div class = "sentence-input-box">
+					<div class = "header"> Sentences between line X and Y</div>
+					<div class = "inputbox">
+						<input type="text" id="between-x" placeholder="min (example: 6)" />
+						<input type="text" id="between-y" placeholder="max (example: 9)" />
+						<button id="between-x-y-button">Update</button>
+					</div>
+				</div>
+				<div id = "betweenXY" class = "sentence-box">
+				</div>
+			</div>
+
+			<div class = "sentence-input">
+				<div class = "sentence-input-box">
+					<div class = "header"> Sentences with length between X and Y </div>
+					<div class = "inputbox">
+						<input type="text" id="min-x" placeholder="min (example: 6)" />
+						<input type="text" id="max-y" placeholder="max (example: 9)" />
+						<button id="min-max-button">Update</button>
+					</div>
+				</div>
+				<div id = "withLength" class = "sentence-box">
+				</div>
+			</div>
+
+			<div class = "sentence-input">
+				<div class = "sentence-input-box">
+					<div class = "header"> Search for text </div>
+					<div class = "inputbox">
+						<input type="text" id="search-text" placeholder="keyword (example: this)" />
+						<button id="search-text-button">Update</button>
+					</div>
+				</div>
+				<div id = "search-result" class = "sentence-box">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!----------- SCRIPTS ------------>
+	    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+
+		<script src="index.js"></script>
+	</body>
+</html>

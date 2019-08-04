@@ -1,0 +1,130 @@
+body{
+	/*background-color: green;*/
+}
+
+#button{
+	
+}
+
+#input{
+	position: absolute;
+	background-color: white;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#information{
+}
+
+#infograph{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+#infocloud{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/*height: 500px;*/
+}
+
+.item_size{
+	display: flex;
+	/*flex-grow: 1;*/
+	flex-direction: column;
+	width: 30%;
+}
+
+#word_cloud{
+	width: 80%;
+	height: 400px;
+}
+
+#text-detail{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+#file-name{
+	display: flex;
+	font-size: 50px;
+	font-weight: bold;
+	align-items: center;
+	margin-left: 20px;
+}
+
+#file-info{
+	width: 500px;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
+#file-info-detail{
+	display:flex;
+	flex-direction: row;
+	justify-content: stretch;
+}
+
+.file-basic{
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+#file-lines{
+	display: flex;
+	width: 250px;
+}
+
+#file-words{
+	display: flex;
+	width: 250px;
+}
+
+.sentence-box{
+	height: 200px;
+	margin-bottom: 20px;
+	overflow: scroll;
+}
+
+#firstNresult{
+	display: flex;
+	flex-direction: row;
+	justify-content: stretch;
+	padding-left: 20px;
+}
+
+#firstNwrapper{
+	width: 50%;
+}
+
+#lastNwrapper{
+	width: 50%;
+}
+
+.sentence-input-box{
+	display: flex;
+	justify-content: space-between;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.sentence-box{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.header{
+	font-size: 20px;
+	font-weight: bold;
+}
